@@ -1,8 +1,9 @@
 <template>
   <section>
-    <v-container>
-      <v-btn outline flat color="blue">Ajouter une Todo</v-btn>
+    <v-container v-if="!modal">
+      <v-btn outline flat color="blue" @click="modal = true">Ajouter une Todo</v-btn>
     </v-container>
+    <createTodo v-else/>
     <v-layout v-for="item in list" :key="item.id">
      <v-flex xs12 sm6 offset-sm3>
       <v-card>
@@ -23,11 +24,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AppLogo from '~/components/AppLogo.vue'
+import createTodo from '~/components/createTodo.vue'
 
 export default {
   components: {
-    AppLogo
+    createTodo
   },
   created () {
     this.$store.dispatch('initList')
@@ -47,7 +48,7 @@ export default {
   },
   data () {
     return {
-
+      modal: false
     }
   }
 }
