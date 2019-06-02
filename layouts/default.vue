@@ -1,5 +1,9 @@
 <template>
   <div>
+    <v-toolbar dark color="primary">
+      <v-toolbar-title class="white--text">TodoList</v-toolbar-title>
+      <v-spacer></v-spacer>
+    </v-toolbar>
     <nuxt/>
   </div>
 </template>
