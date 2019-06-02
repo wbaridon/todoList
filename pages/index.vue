@@ -5,6 +5,7 @@
       <h1 class="title">
         todolist
       </h1>
+      {{list}}
       <h2 class="subtitle">
         Nuxt.js project
       </h2>
@@ -23,11 +24,28 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
   components: {
     AppLogo
+  },
+  created () {
+    this.$store.dispatch('initList')
+  },
+  mounted () {
+    this.$store.dispatch('addItem', 'test')
+  },
+  computed: {
+      ...mapGetters({
+          list: 'getList'
+      })
+  },
+  data () {
+    return {
+
+    }
   }
 }
 </script>
