@@ -7,9 +7,10 @@ export default {
             text: text,
         })
     },
-    remove (state, { todo }) {
-        state.list.splice(state.list.indexOf(todo), 1)
-      },
+    DELETE_ITEM (state, id ) {
+      let index = state.list.findIndex( list => list.id == id)
+      state.list.splice(index, 1)
+    },
     toggle (state, todo) {
         todo.done = !todo.done
     }
